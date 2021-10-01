@@ -1,11 +1,14 @@
-import { DefaultError } from './constants'
-import { PlayerMoves, Result, ResultType } from './interfaces'
+import { DefaultError } from './constants';
+import { Move, PlayerMoves, Result, ResultType } from './interfaces';
 
 const calculateWinner = (moves: PlayerMoves): Result => {
+  if ((moves.player1Move.move as Move) === null) {
+    console.log(typeof moves.player1Move.move);
+  }
   if (moves.player1Move.move === moves.player2Move.move)
     return {
       kind: ResultType.Draw,
-    }
+    };
   switch (moves.player1Move.move) {
     case 'Rock':
       return moves.player2Move.move === 'Scissors'
@@ -16,7 +19,7 @@ const calculateWinner = (moves: PlayerMoves): Result => {
         : {
             kind: ResultType.PlayerWins,
             move: moves.player2Move,
-          }
+          };
     case 'Paper':
       return moves.player2Move.move === 'Rock'
         ? {
@@ -26,7 +29,7 @@ const calculateWinner = (moves: PlayerMoves): Result => {
         : {
             kind: ResultType.PlayerWins,
             move: moves.player2Move,
-          }
+          };
     case 'Scissors':
       return moves.player2Move.move === 'Paper'
         ? {
@@ -36,10 +39,10 @@ const calculateWinner = (moves: PlayerMoves): Result => {
         : {
             kind: ResultType.PlayerWins,
             move: moves.player2Move,
-          }
+          };
     default:
-      throw new Error(DefaultError)
+      throw new Error(DefaultError);
   }
-}
+};
 
-export { calculateWinner }
+export { calculateWinner };
