@@ -13,8 +13,8 @@ const calculateWinner = (moves: PlayerMoves): Result => {
       kind: ResultType.Draw,
     };
   switch (moves.player1Move.move) {
-    case 'Rock':
-      return moves.player2Move.move === 'Scissors'
+    case Move.Rock:
+      return moves.player2Move.move === Move.Scissors
         ? {
             kind: ResultType.PlayerWins,
             move: moves.player1Move,
@@ -23,8 +23,8 @@ const calculateWinner = (moves: PlayerMoves): Result => {
             kind: ResultType.PlayerWins,
             move: moves.player2Move,
           };
-    case 'Paper':
-      return moves.player2Move.move === 'Rock'
+    case Move.Paper:
+      return moves.player2Move.move === Move.Rock
         ? {
             kind: ResultType.PlayerWins,
             move: moves.player1Move,
@@ -33,8 +33,8 @@ const calculateWinner = (moves: PlayerMoves): Result => {
             kind: ResultType.PlayerWins,
             move: moves.player2Move,
           };
-    case 'Scissors':
-      return moves.player2Move.move === 'Paper'
+    case Move.Scissors:
+      return moves.player2Move.move === Move.Paper
         ? {
             kind: ResultType.PlayerWins,
             move: moves.player1Move,
@@ -43,8 +43,6 @@ const calculateWinner = (moves: PlayerMoves): Result => {
             kind: ResultType.PlayerWins,
             move: moves.player2Move,
           };
-    default:
-      throw new Error(DefaultError);
   }
 };
 
