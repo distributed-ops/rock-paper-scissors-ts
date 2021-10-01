@@ -2,8 +2,11 @@ import { DefaultError } from './constants';
 import { Move, PlayerMoves, Result, ResultType } from './interfaces';
 
 const calculateWinner = (moves: PlayerMoves): Result => {
-  if ((moves.player1Move.move as Move) === null) {
-    console.log(typeof moves.player1Move.move);
+  if (
+    !Object.values(Move).includes(moves.player1Move.move as Move) ||
+    !Object.values(Move).includes(moves.player2Move.move as Move)
+  ) {
+    throw new Error(DefaultError);
   }
   if (moves.player1Move.move === moves.player2Move.move)
     return {

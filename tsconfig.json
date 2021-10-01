@@ -9,6 +9,9 @@
     "noImplicitReturns": true,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "outDir": "out",
-    "sourceMap": true
+    "sourceMap": true,
+    "lib": [
+      "es2017.object"
+    ]
   }
 }

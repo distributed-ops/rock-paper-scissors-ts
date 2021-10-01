@@ -13,15 +13,15 @@ const createMoves = (p1Move: Move, p2Move: Move) => {
   };
 };
 
-const createBrokenMoves2 = () => {
-  const broken1 = 'broken';
+const createBrokenEqualMoves = () => {
+  const broken = 'broken';
   const players = {
-    player1: { name: 'p1', play: () => broken1 },
-    player2: { name: 'p2', play: () => broken1 },
+    player1: { name: 'p1', play: () => broken },
+    player2: { name: 'p2', play: () => broken },
   };
   return {
-    player1Move: { player: players.player1, move: broken1 },
-    player2Move: { player: players.player2, move: broken1 },
+    player1Move: { player: players.player1, move: broken },
+    player2Move: { player: players.player2, move: broken },
   };
 };
 
@@ -63,13 +63,13 @@ describe('Win Calculation', () => {
     expect(winningMove.move).toBe(Move.Paper);
   });
 
-  it('broken things break', () => {
+  it('invalid moves throw', () => {
     const moves = createBrokenMoves();
     expect(() => calculateWinner(moves as any)).toThrowError();
   });
 
-  it('broken things break2', () => {
-    const moves = createBrokenMoves2();
+  it('equal moves must also be valid ones', () => {
+    const moves = createBrokenEqualMoves();
     expect(() => calculateWinner(moves as any)).toThrowError();
   });
 

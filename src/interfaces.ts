@@ -5,23 +5,23 @@ export enum Move {
 }
 
 export interface Player {
-  name: string
-  play: () => Move
+  name: string;
+  play: () => Move;
 }
 
 export interface Players {
-  player1: Player
-  player2: Player
+  player1: Player;
+  player2: Player;
 }
 
 export interface PlayerMove {
-  player: Player
-  move: Move
+  player: Player;
+  move: Move;
 }
 
 export interface PlayerMoves {
-  player1Move: PlayerMove
-  player2Move: PlayerMove
+  player1Move: PlayerMove;
+  player2Move: PlayerMove;
 }
 
 export enum ResultType {
@@ -30,12 +30,12 @@ export enum ResultType {
 }
 
 export type PlayerWinsResult = {
-  kind: ResultType.PlayerWins
-  move: PlayerMove
-}
+  kind: ResultType.PlayerWins;
+  move: PlayerMove;
+};
 
 export type DrawResultType = {
-  kind: ResultType.Draw
-}
+  kind: ResultType.Draw;
+};
 
-export type Result = PlayerWinsResult | DrawResultType
+export type Result = PlayerWinsResult | DrawResultType;
